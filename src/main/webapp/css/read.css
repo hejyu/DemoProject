@@ -208,6 +208,10 @@ section  {
 	padding-bottom: 3px;
 }
 
+#read textarea {
+	resize: none;
+}
+
 
 
 

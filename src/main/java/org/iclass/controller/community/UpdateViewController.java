@@ -25,6 +25,8 @@ public class UpdateViewController implements Controller {
 		//지정된 idx 메인글 가져오기
 				String temp = request.getParameter("idx");			//메인글 글번호 파라미터로 받기
 				long idx=0;
+				
+				// 1) 현재 접속한 세션에서 사용자 정보를 읽어오기
 				HttpSession session = request.getSession();
 				DemoMember user = (DemoMember) session.getAttribute("user");
 				try {
@@ -32,6 +34,8 @@ public class UpdateViewController implements Controller {
 					CommunityDao dao = CommunityDao.getInstance();
 					Community vo = dao.selectByIdx(idx);
 					
+				// 2) 글 작성자와 로그인 작성자 비교 - 일치하지 않으면 예외 발생(URL에서 임의로 idx를 보낼 수 있기 때문에)
+				// 인가(권한이 있는지)을 확인, 인증 (로그인-사용자확인) 
 				if(vo==null || !vo.getWriter().equals(user.getUserid())) throw new RuntimeException();
 					request.setAttribute("vo", vo);				
 					
