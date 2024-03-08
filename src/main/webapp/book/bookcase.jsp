@@ -30,11 +30,23 @@
 				<h3>책장</h3>
 				<p>판매 중인 중고도서입니다.</p>
 				<hr style="color:white;">
+				
+				<!-- 로그인 사용자 확인 시 -->
+				<c:if test="${user != null }">
+						<div style="text-align : center;">
+						<a href="form">판매 등록</a>
+						</div>
+				</c:if>
 				<div id="mainarea">
 					<c:forEach var="bo" items="${saleList }">
 					<div class="gallery bookcase">
 						<div style="height:80%;">
-							<img src="../images/bookcase/${bo.cover }" alt="${bo.title }">
+							<!-- todo : 사용자가 파일 (이미지, 텍스트 등)을 업로드 하면
+										서버 컴퓨터가 특정 폴더에 저장되도록 할 것이고
+										그때는 src 속성값도 변경되도록 할 것입니다.
+							   -->
+							   <img src="/upload/${bo.cover }" alt="${bo.title }"> 
+							<%-- <img src="../images/bookcase/${bo.cover }" alt="${bo.title }"> --%>
 						</div>
 						<div  class="intro">	
 							<c:if test="${bo.status=='N' }">
@@ -127,21 +139,21 @@
 				}
 			}else {
 			
-			const datas = target.getAttribute("data-all")
-			const arr = datas.split(",");
-			obj.bcode = arr[0];
-			obj.title = arr[1];
-			obj.price = arr[2];
-			obj.saleuser = arr[3];
-			
-			const now = new Date();
-			orderid = now.toISOString().replace(/\D/g, '').slice(2, 14);
-	//		const obj = {bcode :arr[0] ,title:arr[1] , price :arr[2] , saleuser:arr[3] }
-			document.querySelector(".modal-body #saleuser").innerHTML = obj.saleuser
-			document.querySelector(".modal-body #title").innerHTML = obj.title
-			document.querySelector(".modal-body #price").innerHTML = Number(obj.price).toLocaleString("ko-KR")
-			modal.show();
-			tossPayInit();
+				const datas = target.getAttribute("data-all")
+				const arr = datas.split(",");
+				obj.bcode = arr[0];
+				obj.title = arr[1];
+				obj.price = arr[2];
+				obj.saleuser = arr[3];
+				
+				const now = new Date();
+				orderid = now.toISOString().replace(/\D/g, '').slice(2, 14);
+		//		const obj = {bcode :arr[0] ,title:arr[1] , price :arr[2] , saleuser:arr[3] }
+				document.querySelector(".modal-body #saleuser").innerHTML = obj.saleuser
+				document.querySelector(".modal-body #title").innerHTML = obj.title
+				document.querySelector(".modal-body #price").innerHTML = Number(obj.price).toLocaleString("ko-KR")
+				modal.show();
+				tossPayInit();
 			}
 		})
 		
