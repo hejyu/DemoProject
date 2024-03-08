@@ -16,7 +16,11 @@ import org.iclass.vo.DemoMember;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 //new RequestKeyValue("/login", "POST")
+
+@Slf4j
 public class LoginActionController implements Controller {
 	private static final Logger logger = LoggerFactory.getLogger(LoginActionController.class);
 	@Override
@@ -40,9 +44,13 @@ public class LoginActionController implements Controller {
 		}else {			//로그인 실패 정보 쿠키에 저장하기
 			Cookie cookie = new Cookie("incorrect","y");
 			cookie.setPath("/");		//쿠키 저장 경로
+			
 			response.addCookie(cookie);
 			url="login";
 		}
+		
+		log.info("user =  {}", user);
+		log.info("url =  {}", url);
 		
 		response.sendRedirect(url);		
 	}
