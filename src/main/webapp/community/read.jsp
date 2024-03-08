@@ -140,13 +140,8 @@ style="background-color:#f3f3f3;font-size:inherit;resize: none;border:none;"><c:
 				</ul>
 			</li>
 			<li>
-<<<<<<< HEAD
-				<textarea class="cmtcontent" 
-								  style="border: none;resize: none;"
-=======
 				<textarea class="cmtcontent"
 						  style="border: none;resize: none;"
->>>>>>> refs/heads/main
 				><c:out value="${cmt.content }" /></textarea>
 			</li>
 			</c:forEach>
