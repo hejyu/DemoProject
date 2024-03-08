@@ -156,29 +156,15 @@ style="background-color:#f3f3f3;font-size:inherit;resize: none;border:none;"><c:
 	if(user.length !=0)
 		txtarea.placeholder = user + '님 댓글을 작성하세요.'
 
-<<<<<<< HEAD
-		
-	// 댓글 등록과 삭제 모두 post 방식으로 합니다.
-=======
 	//댓글 등록과 삭제 모두 post 방식으로 합니다.
->>>>>>> refs/heads/main
 	function executeCmt(fval,cidx){	/* 댓글 작성추가 와 삭제는 매개변수 f의 값으로 구별한다. idx는 매개변수는 삭제할 댓글번호 */
 		console.log(fval)
 		document.forms[0].f.value=fval
-<<<<<<< HEAD
-		if(fval==='2') {									//댓글 삭제
-=======
 		if(fval==='2') {		//댓글 삭제
->>>>>>> refs/heads/main
 			document.forms[0].idx.value=cidx		/* hidden 타입 idx의 value 로 설정*/
 			const yn = confirm('댓글 삭제하시겠습니까?')
-<<<<<<< HEAD
 			if(yn)	document.forms[0].submit()		// 동기식 통신
-		}else if(fval==='1'){							//댓글 등록
-=======
-			if(yn)	document.forms[0].submit()	
 		}else if(fval==='1'){			//댓글 등록
->>>>>>> refs/heads/main
 			document.forms[0].submit()			
 		}
 	}
@@ -188,11 +174,7 @@ style="background-color:#f3f3f3;font-size:inherit;resize: none;border:none;"><c:
 	}
 	
 	function login() {
-<<<<<<< HEAD
-		sessionStorage.setItem('back', location.href);	//location.href 는 현재의 요청 ulr을 읽어옵니다.
-=======
 		sessionStorage.setItem('back', location.href);		//location.href 는 현재의 요청 url 읽어옵니다.
->>>>>>> refs/heads/main
 		location.href='../login'  // 로그인 후 글쓰기 url로 redirect 하기 위한 파라미터
 	}
 	
