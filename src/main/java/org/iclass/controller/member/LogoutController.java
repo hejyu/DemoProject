@@ -20,11 +20,11 @@ public class LogoutController implements Controller {
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//로그 아웃
 		HttpSession session = request.getSession();
-		log.info("session =  {}", session);
+		log.info("session.getId() =  {}", session.getId());
 		session.invalidate(); 			//세션 무효화:기존 세션ID 삭제 
 	//	response.sendRedirect(request.getContextPath());
 		
-		log.info("session invalidate =  {}", session);
+		log.info("session.getId() invalidate =  {}", session.getId());
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("logout.jsp");

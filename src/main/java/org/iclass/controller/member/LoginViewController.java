@@ -20,7 +20,7 @@ public class LoginViewController implements Controller {
 		String temp=request.getParameter("back");
 		HttpSession session = request.getSession();
 		if(temp!=null && temp.equals("w")) 
-			session .setAttribute("back","community/write");
+			session.setAttribute("back","community/write");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		dispatcher.forward(request, response);
