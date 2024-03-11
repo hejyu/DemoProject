@@ -4,14 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.iclass.controller.api.ApiCheckIdController;
+import org.iclass.controller.api.ApiGetBookOneController;
 import org.iclass.controller.api.ApiMemberJoinController;
 import org.iclass.controller.api.ApiMemberModifyController;
+import org.iclass.controller.api.ApiNewBookImageUploadController;
 import org.iclass.controller.api.ApiPaymentSaveController;
 import org.iclass.controller.book.BookCaseFormController;
 import org.iclass.controller.book.BookCaseListController;
 import org.iclass.controller.book.BookCasePayRequestFailController;
 import org.iclass.controller.book.BookCasePayRequestSuccessController;
 import org.iclass.controller.book.BookCaseSaveController;
+import org.iclass.controller.book.NewBookListController;
+import org.iclass.controller.book.NewBookSaveController;
+import org.iclass.controller.book.NewFormController;
 import org.iclass.controller.community.CommentsController;
 import org.iclass.controller.community.DeleteController;
 import org.iclass.controller.community.ListController;
@@ -28,6 +33,14 @@ import org.iclass.controller.member.MemberDropController;
 import org.iclass.controller.member.MemberJoinController;
 import org.iclass.controller.member.MemberModifyController;
 import org.iclass.controller.member.MemberSaveController;
+import org.iclass.controller.notice.NoticeDeleteController;
+import org.iclass.controller.notice.NoticeFileDownloadController;
+import org.iclass.controller.notice.NoticeListController;
+import org.iclass.controller.notice.NoticeReadController;
+import org.iclass.controller.notice.NoticeUpdateController;
+import org.iclass.controller.notice.NoticeUpdateSaveController;
+import org.iclass.controller.notice.NoticeWriteController;
+import org.iclass.controller.notice.NoticeWriteSaveController;
 
 public class RequestControllerMapping {
 	private static final Map<RequestKeyValue,Controller> mapping = new HashMap<>();
