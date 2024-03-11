@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="css/join.css" /> 
     <script>
-      window.addEventListener('message', (e) => {
+    
+     /* sms.jsp 에서 인증에 성공하면 보낸 메시지 message  를 받는 이벤트입니다. */
+      window.addEventListener('message', (e) => {	// 윈도우에서 메시지 수신이 있을 때
 		  console.log('-->',e.data);
         if (e && e.data) {
           const res = JSON.parse(e.data);
@@ -126,7 +128,7 @@
         if(!isChecked) {
           alert("아이디 중복확인을 해주세요.");
           return;
-        }
+        }	// isChecked 가 참일 때 중복검사했던 아이디와 현재 username의 값이 같은지 비교 필요합니다
 
         if(data.password == "") {
           alert("비밀번호를 입력하세요.");
@@ -219,6 +221,7 @@
         });
       }
 
+      /* 사용자 아이디 중복체크 */
       function checkId() {
         if($("#username").val() == "") {
           alert("아이디를 입력하세요.");
@@ -226,6 +229,7 @@
           return;
         }
 
+        // form 태그 안에 모든 요소 값을 자바스크립트 객체로  변환합니다.
         const data = $('#form').serializeObject();
         var idRule = /^[a-z]+[a-z0-9]{5,11}$/g;
         if(!idRule.test(data.username)){
@@ -234,6 +238,7 @@
             return;
         }
 		console.log('request data',data);
+		/*  비동기 통신을 위한 jquery (순수 자바스크립트 의 XMLHttpRequest 를 쉽게 사용하도록 합니다) */
         $.ajax({
           url        : './api/auth/checkId',
           data       : data,
@@ -241,7 +246,7 @@
           type       : 'post',
         /* json 으로 직렬화 하지 않고 보내기 */
         /*   contentType: 'application/json', */
-          success : function(res){
+          success : function(res){		// 요청에 성공하고 받은 응답을 res 변수로 받습니다
         	console.log('/api/auth/checkId',res) ;
         	if (!res.isExist) {
 	            alert("사용 가능한 아이디입니다.");

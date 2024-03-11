@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.iclass.controller.Controller;
 
 // new RequestKeyValue("/join", "POST") 
+// 회원가입 post 처리는 비동기로 했습니다. 이 소스 파일은 필요가 없습니다.
 public class MemberSaveController implements Controller {
 
 	@Override
