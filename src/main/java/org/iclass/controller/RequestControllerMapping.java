@@ -3,15 +3,16 @@ package org.iclass.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.iclass.controller.book.BookCaseFormControlller;
+import org.iclass.controller.book.BookCaseFormController;
 import org.iclass.controller.book.BookCaseListController;
-import org.iclass.controller.book.BookCaseSaveControlller;
+import org.iclass.controller.book.BookCaseSaveController;
 import org.iclass.controller.community.CommentsController;
 import org.iclass.controller.community.DeleteController;
 import org.iclass.controller.community.ListController;
 import org.iclass.controller.community.ReadController;
 import org.iclass.controller.community.UpdateController;
 import org.iclass.controller.community.UpdateViewController;
+import org.iclass.controller.community.WriteController;
 import org.iclass.controller.community.WriteViewController;
 import org.iclass.controller.member.LoginActionController;
 import org.iclass.controller.member.LoginViewController;
@@ -24,7 +25,8 @@ public class RequestControllerMapping {
 		//설계된 url,method 에 따라 처리할 controller 구현체를 Key,Value 로 HashMap에 저장합니다.
 		mapping.put(new RequestKeyValue("/community/list", "GET"), new ListController() );
 		mapping.put(new RequestKeyValue("/community/write","GET"), new WriteViewController() );
-//		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
+		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
+
 //		//게시판 글 상세보기 ,수정하기,삭제하기
 		mapping.put(new RequestKeyValue("/community/read", "GET"), new ReadController() );
 		mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
@@ -56,9 +58,9 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/book/bookcase","GET"), new BookCaseListController());
 //		mapping.put(new RequestKeyValue("/pay/success","GET"), new BookCasePayRequestSuccessController());
 //		mapping.put(new RequestKeyValue("/pay/fail","GET"), new BookCasePayRequestFailController());
-
-		mapping.put(new RequestKeyValue("/book/form","GET"), new BookCaseFormControlller());
-		mapping.put(new RequestKeyValue("/book/save","POST"), new BookCaseSaveControlller());			
+		//추가
+		mapping.put(new RequestKeyValue("/book/form","GET"), new BookCaseFormController());
+		mapping.put(new RequestKeyValue("/book/save","POST"), new BookCaseSaveController());
 		
 		//공지사항(검색기능)
 //		mapping.put(new RequestKeyValue("/notice/list", "GET"), new NoticeListController());
