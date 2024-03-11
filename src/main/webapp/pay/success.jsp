@@ -92,17 +92,22 @@
 			<!-- 비동기 http 통신 axios api-->
 			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script type="text/javascript">
-		const responseData='${payment}'
-		const payment = JSON.parse(responseData)
+		const responseData='${payment}'			/* 토스에서 보내준 응답 */
+		const payment = JSON.parse(responseData)		/* 자바스크립트 객체로 변환  */
 		const buyuser ='${user.userid}'
 		console.dir(payment)
 
+		// 비동기 통신의 다른 방법 AXIOS 라이브러리 : 우리 서버에 TABLE 정보를 INSERT 하기 위함
+		// 함수 requestPaymentSave 는 async(비동기) 처리한다는 의미
 		async function requestPaymentSave(payReq){
+			//await은 axios가 post 요청을 보낸 후 응답을 기다린다는 의미
+			//			비동기 함수 안에서 다른 비동기 함수를 기다리도록 한다는 의미(비동기 함수 안에 있는 ㅂ)
 			const result = await axios.post('../api/pay',payReq)
 			console.log(result)
-			return result.data
+			return result.data		// 응답의 data (정해진 이름) 프로퍼티를 리턴합니다
 		}
 		
+		// 토스가 보내 준 응답 payment 값을 api/pay로 보내고 db에 insert 할 것입니다.
 		const payReq = {bcode: payment.orderId.substring(0,7),
 						orderid: payment.orderId , 
 						amount: payment.totalAmount, 
@@ -111,8 +116,11 @@
 						paytype : payment.card.cardType + ' ' + payment.method, 
 						paymentkey:payment.paymentKey }
 		
+		
+		// 함수 requestPaymentSave 실행. 데이터는 payReq
 		requestPaymentSave(payReq)
-		.then(result => {
+		.then(result => {			// then은 요청이 성공하면 실행
+			// 6. 결제 승인 정보를 화면에 출력한다
 			document.querySelector('#result').innerHTML = result
 			document.querySelector('#orderId').innerHTML = payment.orderId
 			document.querySelector('#orderName').innerHTML = payment.orderName
@@ -122,7 +130,7 @@
 			document.querySelector('#paydate').innerHTML = payment.approvedAt
 			document.querySelector('#amount').innerHTML = payment.totalAmount.toLocaleString() + '원'
 		})
-		.catch(e=> {
+		.catch(e=> {		// 요청에 오류 생겼을 때 실행
 			console.error(e.response)
 			location.href='../invalid.html'
 		})

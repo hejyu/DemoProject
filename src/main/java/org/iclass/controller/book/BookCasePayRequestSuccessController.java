@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,13 +30,13 @@ public class BookCasePayRequestSuccessController implements Controller {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-//		Map<String,Object> payMap = new HashMap<>();
-//		payMap.put("paymentType", request.getParameter("paymentType"));
-//		payMap.put("orderId", request.getParameter("orderId"));
-//		payMap.put("paymentKey", request.getParameter("paymentKey"));
-//		payMap.put("amount", request.getParameter("amount"));
-//		
-//		logger.info("payMap : {}",payMap);
+		Map<String,Object> payMap = new HashMap<>();
+		payMap.put("paymentType", request.getParameter("paymentType"));
+		payMap.put("orderId", request.getParameter("orderId"));
+		payMap.put("paymentKey", request.getParameter("paymentKey"));
+		payMap.put("amount", request.getParameter("amount"));
+		
+		logger.info("payMap : {}",payMap);
 //		request.setAttribute("payMap", payMap);
 //		
 		String orderId = request.getParameter("orderId");
@@ -53,7 +55,7 @@ public class BookCasePayRequestSuccessController implements Controller {
         //amount , orderId도 필요함.
         
         // Authorization 헤더 생성
-        String secretKey = "";
+        String secretKey = "test_sk_0RnYX2w532ZXMdZoJLqR3NeyqApQ";
         String authorizationHeader = createAuthorizationHeader(secretKey);
 
         // JSON 데이터 생성
