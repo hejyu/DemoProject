@@ -7,8 +7,12 @@ function tossPayInit() {
 	// 로그인한 상태라면, 문서에 있는 클라이언트 키, 시크릿 키가 내 테스트 키로 바뀌어요.
 	const clientKey = 'test_ck_DnyRpQWGrNDzNjejy5n23Kwv1M9E'
 
+<<<<<<< HEAD
     const customerKey = crypto.randomUUID()  //"VUEWF1yYWn17zOh3L6Wot" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID(임의값)
     console.log("customerKey : ", customerKey)
+=======
+   const customerKey = crypto.randomUUID()  //"VUEWF1yYWn17zOh3L6Wot" // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID(임의값)
+>>>>>>> refs/heads/main
 //    const coupon = document.getElementById("coupon-box")
     const button = document.getElementById("payment-button")
     // ------  결제위젯 초기화 ------ 
